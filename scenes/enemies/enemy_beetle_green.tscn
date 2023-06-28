@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/enemies/enemy_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/enemies/beetle_green.png" type="Texture" id=2]
+
+[node name="Enemy" instance=ExtResource( 1 )]
+
+MAX_HEALTH = 240
+DAMAGE = 15
+SPEED = 48
+COINS = 15
+
+[node name="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+

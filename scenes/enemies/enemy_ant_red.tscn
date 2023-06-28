@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/enemies/enemy_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/enemies/ant_red.png" type="Texture" id=2]
+
+[node name="Enemy" instance=ExtResource( 1 )]
+
+DAMAGE = 8
+SPEED = 48
+COINS = 8
+
+[node name="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+

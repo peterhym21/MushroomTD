@@ -1,0 +1,413 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scripts/gui/hud.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/gui/tower_button.gd" type="Script" id=3]
+[ext_resource path="res://scenes/towers/tower_shortrange.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/towers/tower_longrange.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/towers/tower_poison.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/towers/tower_slow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/towers/tower_wall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/gui/pausemenu.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "tooltip_hide"
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("Base/Tooltip")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0.3 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base/Tooltip:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( -4, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("Base/Tooltip")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base/Tooltip:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( -4, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="HUD" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 2, 2 )
+script/script = ExtResource( 1 )
+
+[node name="Base" type="Control" parent="."]
+
+anchor/right = 2
+anchor/bottom = 2
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 2 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.5
+margin/bottom = 0.5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WaveButton" type="Button" parent="Base"]
+
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 48.0
+margin/right = 160.0
+margin/bottom = 2.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+text = "Next Wave"
+flat = false
+
+[node name="HealthBar" type="ProgressBar" parent="Base"]
+
+editor/display_folded = true
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 210.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 22.0
+range/min = 0.0
+range/max = 100.0
+range/step = 1.0
+range/page = 0.0
+range/value = 100.0
+range/exp_edit = false
+range/rounded = false
+percent/visible = true
+
+[node name="Label" type="Label" parent="Base/HealthBar"]
+
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -34.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = -3.0
+text = "Health:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BottomBar" type="PanelContainer" parent="Base"]
+
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 302.0
+margin/top = 48.0
+margin/right = 2.0
+margin/bottom = 2.0
+
+[node name="Panel" type="Panel" parent="Base/BottomBar"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1.0
+margin/top = 1.0
+margin/right = 299.0
+margin/bottom = 45.0
+
+[node name="TowerContainer" type="HBoxContainer" parent="Base/BottomBar/Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 2.0
+custom_constants/separation = 2
+alignment = 2
+
+[node name="Tower0" type="Button" parent="Base/BottomBar/Panel/TowerContainer"]
+
+rect/min_size = Vector2( 40, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 86.0
+margin/top = 0.0
+margin/right = 126.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+script/script = ExtResource( 3 )
+TOWER_SCENE = ExtResource( 4 )
+
+[node name="Tower1" type="Button" parent="Base/BottomBar/Panel/TowerContainer"]
+
+rect/min_size = Vector2( 40, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 128.0
+margin/top = 0.0
+margin/right = 168.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+script/script = ExtResource( 3 )
+TOWER_SCENE = ExtResource( 5 )
+
+[node name="Tower2" type="Button" parent="Base/BottomBar/Panel/TowerContainer"]
+
+rect/min_size = Vector2( 40, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 170.0
+margin/top = 0.0
+margin/right = 210.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+script/script = ExtResource( 3 )
+TOWER_SCENE = ExtResource( 6 )
+
+[node name="Tower3" type="Button" parent="Base/BottomBar/Panel/TowerContainer"]
+
+rect/min_size = Vector2( 40, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 212.0
+margin/top = 0.0
+margin/right = 252.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+script/script = ExtResource( 3 )
+TOWER_SCENE = ExtResource( 7 )
+
+[node name="Tower4" type="Button" parent="Base/BottomBar/Panel/TowerContainer"]
+
+rect/min_size = Vector2( 40, 40 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 254.0
+margin/top = 0.0
+margin/right = 294.0
+margin/bottom = 40.0
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+flat = false
+script/script = ExtResource( 3 )
+TOWER_SCENE = ExtResource( 8 )
+
+[node name="Coins" type="Label" parent="Base/BottomBar/Panel"]
+
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 86.0
+margin/bottom = 2.0
+text = "Coins: 100"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="BottomBar2" type="PanelContainer" parent="Base"]
+
+editor/display_folded = true
+anchor/top = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 48.0
+margin/right = 78.0
+margin/bottom = 2.0
+
+[node name="Panel" type="Panel" parent="Base/BottomBar2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1.0
+margin/top = 1.0
+margin/right = 75.0
+margin/bottom = 45.0
+
+[node name="Wave" type="Label" parent="Base/BottomBar2/Panel"]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 42.0
+margin/right = 2.0
+margin/bottom = 22.0
+text = "Wave: 1/5"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Score" type="Label" parent="Base/BottomBar2/Panel"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 22.0
+margin/right = 2.0
+margin/bottom = 42.0
+text = "Score: 000"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Tooltip" type="Panel" parent="Base"]
+
+editor/display_folded = true
+visibility/visible = false
+visibility/opacity = 0.0
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 512.0
+margin/top = 300.0
+margin/right = 352.0
+margin/bottom = 204.0
+
+[node name="Label" type="Label" parent="Base/Tooltip"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 2.0
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="PauseMenu" parent="Base" instance=ExtResource( 9 )]
+
+visibility/visible = false
+
+[node name="AnimTooltip" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/tooltip_hide = SubResource( 1 )
+anims/tooltip_show = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="pressed" from="Base/WaveButton" to="." method="_on_WaveButton_pressed"]
+
+

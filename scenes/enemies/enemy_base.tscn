@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://scripts/enemies/enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemies/ant.png" type="Texture" id=2]
+[ext_resource path="res://sounds/enemy_hurt.smp" type="Sample" id=3]
+
+[sub_resource type="CircleShape2D" id=7]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="CanvasItemShaderGraph" id=1]
+
+_code = { "fragment":"vec3 nd1sl2=vec3(UV,0);\nvec4 rt_default_tex5=tex(TEXTURE,nd1sl2.xy);\nvec3 nd5sl0=rt_default_tex5.rgb;\nfloat nd5sl1=rt_default_tex5.a;\nuniform float HurtScale=1;\nfloat nd2sl0=HurtScale;\nvec3 nd4sl1def=vec3(0.917647,0.831373,0.666667);\nvec3 nd4sl0=(nd5sl0)/(vec3(1.0)-nd4sl1def);\nvec3 nd3sl0=mix(nd5sl0,nd4sl0,nd2sl0);\nCOLOR.rgb=nd3sl0;\n", "fragment_ofs":0, "light":"", "light_ofs":0, "vertex":"", "vertex_ofs":0 }
+_data = { "shaders":[ [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ], [ 0, 33, Vector2( 800, 80 ), null, null, [ 0, 3, 0 ], 1, 0, Vector2( 0, 80 ), null, null, [  ], 2, 26, Vector2( 340, 260 ), "HurtScale", 1.0, [  ], 3, 23, Vector2( 580, 160 ), null, null, [ 0, 5, 0, 1, 4, 0, 2, 2, 0, 2147483647, 0, null, 2147483647, 1, null, 2147483647, 2, null ], 4, 10, Vector2( 360, 160 ), 5, null, [ 0, 5, 0, 2147483647, 0, null, 2147483647, 1, Color( 0.917647, 0.831373, 0.666667, 1 ) ], 5, 32, Vector2( 200, 80 ), null, null, [ 0, 1, 2, 2147483647, 0, null ] ], [ 0, 33, Vector2( 350, 40 ), null, null, [  ], 1, 0, Vector2( 50, 40 ), null, null, [  ] ] ] }
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/HurtScale = 0.0
+
+[sub_resource type="Animation" id=8]
+
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
+
+[sub_resource type="Animation" id=9]
+
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 2, 3 ] }
+
+[sub_resource type="SampleLibrary" id=6]
+
+samples/enemy_hurt = { "db":-8.0, "pitch":0.8, "sample":ExtResource( 3 ) }
+
+[node name="Enemy" type="Area2D"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+MAX_HEALTH = 60
+DAMAGE = 5
+SPEED = 32
+COINS = 10
+
+[node name="Sprite" type="Sprite" parent="."]
+
+material/material = SubResource( 2 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -4 )
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, -4 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/walkdown = SubResource( 8 )
+anims/walkup = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "walkdown"
+
+[node name="SFX" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 6 )
+config/pitch_random = 0.0
+
+

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/towers/bullets/bullet_basic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/towers/bullet_red.png" type="Texture" id=2]
+
+[node name="Bullet" instance=ExtResource( 1 )]
+
+SPEED = 128
+DAMAGE = 14
+
+[node name="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+

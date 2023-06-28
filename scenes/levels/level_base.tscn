@@ -1,0 +1,494 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://scripts/level.gd" type="Script" id=1]
+[ext_resource path="res://tilesets/back.tres" type="TileSet" id=2]
+[ext_resource path="res://scripts/level_background.gd" type="Script" id=3]
+[ext_resource path="res://tilesets/floor.tres" type="TileSet" id=4]
+[ext_resource path="res://scripts/map/tilemap_draw.gd" type="Script" id=5]
+[ext_resource path="res://scenes/background/foreground.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 3, 4, 6, 7, 8, 9, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 2, 2.5, 3.5, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 3.5, 4, 4.5, 5, 6, 7, 8, 8.5, 9, 9.5, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 3, 3.5, 4, 4.5, 5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 2.5, 3.5, 4, 5, 5.5, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle_green" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle_green" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "ant_big_red" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "wave5"
+length = 10.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 2.5, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle_green" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle_green" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "beetle" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "cat" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "cat" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "cat" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "cat" ],
+"method": "spawn_enemy"
+}, {
+"args": [ "snail" ],
+"method": "spawn_enemy"
+} ]
+}
+
+[node name="Level" type="Node2D"]
+
+transform/scale = Vector2( 2, 2 )
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+LEVEL_NUMBER = 0
+WAVE_TOTAL = 6
+
+[node name="Back" type="TileMap" parent="."]
+
+editor/display_folded = true
+visibility/opacity = 0.5
+z/z = -1
+mode = 2
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 48, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 32, 0, 16, 24, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray(  )
+script/script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shadow" type="TileMap" parent="Back"]
+
+mode = 2
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 48, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 32, 0, 16, 24, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray(  )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor" type="TileMap" parent="."]
+
+editor/display_folded = true
+mode = 2
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 48, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 32, 0, 16, 24, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray(  )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Draw" type="Node2D" parent="Floor"]
+
+visibility/blend_mode = 1
+script/script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Objects" type="YSort" parent="."]
+
+sort/enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WavePlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/wave0 = SubResource( 1 )
+anims/wave1 = SubResource( 2 )
+anims/wave2 = SubResource( 3 )
+anims/wave3 = SubResource( 4 )
+anims/wave4 = SubResource( 5 )
+anims/wave5 = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="Foreground" parent="." instance=ExtResource( 6 )]
+
+

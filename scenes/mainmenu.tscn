@@ -1,0 +1,345 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/gui/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/mainmenu.gd" type="Script" id=2]
+[ext_resource path="res://tilesets/back.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/background/foreground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/Title.png" type="Texture" id=5]
+
+[node name="MainMenu" type="Control"]
+
+anchor/right = 2
+anchor/bottom = 2
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.5
+margin/bottom = 0.5
+script/script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+
+visibility/opacity = 0.5
+z/z = -1
+mode = 2
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 48, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 32, 0, 16, 24, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -65536, 3, -65535, 3, -65534, 3, -65533, 3, -65532, 3, -65531, 3, -65530, 3, -65529, 3, -65528, 3, -65527, 3, -65526, 3, -65525, 3, -65524, 3, -65523, 3, -65522, 3, -65521, 3, -65520, 3, -65519, 3, -65518, 3, -65517, 3, -65516, 2, -65515, 1, -65514, 1, -65513, 1, -65512, 0, -65511, 0, 65535, 3, 0, 3, 1, 3, 2, 3, 3, 3, 4, 3, 5, 3, 6, 3, 7, 3, 8, 2, 9, 2, 10, 2, 11, 2, 12, 2, 13, 3, 14, 3, 15, 3, 16, 3, 17, 3, 18, 3, 19, 2, 20, 1, 21, 1, 22, 1, 23, 0, 24, 0, 131071, 3, 65536, 3, 65537, 2, 65538, 3, 65539, 3, 65540, 2, 65541, 2, 65542, 1, 65543, 1, 65544, 1, 65545, 1, 65546, 1, 65547, 1, 65548, 2, 65549, 3, 65550, 3, 65551, 3, 65552, 2, 65553, 2, 65554, 1, 65555, 1, 65556, 0, 65557, 0, 65558, 0, 196606, 3, 196607, 3, 131072, 3, 131073, 3, 131074, 2, 131075, 2, 131076, 1, 131077, 1, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 1, 131084, 2, 131085, 2, 131086, 2, 131087, 2, 131088, 2, 131089, 1, 131090, 0, 131091, 0, 131092, 0, 131093, 0, 262142, 3, 262143, 3, 196608, 3, 196609, 2, 196610, 1, 196611, 1, 196612, 1, 196613, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 1, 196620, 1, 196621, 1, 196622, 1, 196623, 1, 196624, 0, 196625, 0, 196626, 0, 327677, 3, 327678, 3, 327679, 2, 262144, 1, 262145, 1, 262146, 0, 262147, 1, 262148, 1, 262154, 0, 262155, 1, 262156, 1, 262157, 0, 262158, 0, 262159, 0, 393213, 3, 393214, 1, 393215, 1, 327680, 0, 327681, 0, 327682, 0, 327683, 0, 327691, 0, 327692, 0, 458748, 3, 458749, 2, 458750, 1, 458751, 0, 393216, 0, 393218, 0, 524284, 3, 524285, 2, 524286, 1, 589819, 3, 589820, 3, 589821, 2, 589822, 0, 655355, 3, 655356, 2, 655357, 1, 720890, 3, 720891, 2, 720892, 1, 720893, 0, 786426, 3, 786427, 1, 786428, 1, 786429, 0, 851961, 3, 851962, 2, 851963, 2, 851964, 0, 917497, 3, 917498, 2, 917499, 1, 917500, 0, 983032, 3, 983033, 2, 983034, 1, 983035, 0, 1048568, 2, 1048569, 1, 1048570, 0, 1048571, 0, 1114103, 2, 1114104, 1, 1114105, 1, 1114106, 0, 1179639, 1, 1179640, 0, 1179641, 0, 1245174, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foreground" parent="." instance=ExtResource( 4 )]
+
+scale = Vector2( 2, 2 )
+
+[node name="Title" type="TextureFrame" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+rect/scale = Vector2( 0.2, 0.2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 256.0
+margin/top = 150.0
+margin/right = -2299.0
+margin/bottom = 393.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 64.0
+margin/top = 64.0
+margin/right = 64.0
+margin/bottom = 64.0
+use_top_left = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 155.0
+margin/top = 42.0
+margin/right = 229.0
+margin/bottom = 130.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 16 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 74.0
+margin/bottom = 16.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "LEVEL SELECT"
+flat = false
+
+[node name="InfoButton" type="Button" parent="CenterContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 16 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 24.0
+margin/right = 71.0
+margin/bottom = 40.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "HOW TO PLAY"
+flat = false
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 16 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 2
+margin/left = 14.0
+margin/top = 48.0
+margin/right = 59.0
+margin/bottom = 64.0
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+text = "OPTIONS"
+flat = false
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+
+rect/min_size = Vector2( 0, 16 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 0
+size_flags/vertical = 2
+margin/left = 23.0
+margin/top = 72.0
+margin/right = 50.0
+margin/bottom = 88.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "QUIT"
+flat = false
+
+[node name="HowTo" type="Panel" parent="."]
+
+visibility/visible = false
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -56.0
+margin/top = 144.0
+margin/right = -250.0
+margin/bottom = -144.0
+
+[node name="Label" type="Label" parent="HowTo"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 2.0
+text = "How to play:
+Place mushroom towers to defeat incoming enemy waves. Mushrooms can be placed on any tiles, the enemies will find the shortest path between their hill and your pumpkin. There must be a valid path to start a wave. Deleting a tower gives a full refund.
+
+Controls:
+ESC - Pause
+Left Click - Place current tower
+Right Click - Stop placing tower / Delete tower below cursor
+Middle Click - Hold to move camera
+Scroll Wheel - Zoom in and out
+Keys 1-5 - Select a tower to place"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Options" type="Panel" parent="."]
+
+visibility/visible = false
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 250.0
+margin/top = 80.0
+margin/right = 56.0
+margin/bottom = -80.0
+
+[node name="Label" type="Label" parent="Options"]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 2.0
+margin/bottom = 16.0
+text = "Options:"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 16.0
+margin/top = 32.0
+margin/right = 16.0
+margin/bottom = 16.0
+custom_constants/separation = 48
+alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="Options/VBoxContainer"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 24.0
+margin/right = 162.0
+margin/bottom = 32.0
+range/min = 0.0
+range/max = 10.0
+range/step = 1.0
+range/page = 0.0
+range/value = 10.0
+range/exp_edit = false
+range/rounded = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/SoundSlider"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = -10.0
+margin/right = 40.0
+margin/bottom = -1.0
+text = "Sound Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="MusicSlider" type="HSlider" parent="Options/VBoxContainer"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 80.0
+margin/right = 162.0
+margin/bottom = 88.0
+range/min = 0.0
+range/max = 10.0
+range/step = 1.0
+range/page = 0.0
+range/value = 10.0
+range/exp_edit = false
+range/rounded = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/MusicSlider"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = -10.0
+margin/right = 40.0
+margin/bottom = -1.0
+text = "Music Volume"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+
+[connection signal="toggled" from="CenterContainer/VBoxContainer/InfoButton" to="." method="_on_InfoButton_toggled"]
+
+[connection signal="toggled" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_toggled"]
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+
+[connection signal="value_changed" from="Options/VBoxContainer/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
+
+[connection signal="value_changed" from="Options/VBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+
+
